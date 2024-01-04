@@ -7,6 +7,8 @@ namespace YK
     {
         public static PCScreenManager Instance;
 
+        public CanvasGroup PCCanvasGroup;
+
         [Header("Character Slot")]
         public CharacterSlot currentSelectedSlot = CharacterSlot.NO_SLOT;
 
@@ -25,6 +27,13 @@ namespace YK
             {
                 Destroy(gameObject);
             }
+
+            PCCanvasGroup = Instance.GetComponent<CanvasGroup>();
+        }
+
+        private void Start()
+        {
+            PCCanvasGroup.blocksRaycasts = false;
         }
 
         public void SelectCharacterSlot(CharacterSlot characterSlot)
